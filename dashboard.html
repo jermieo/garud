@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Sidebar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #51145e;
+            color: white;
+            padding-top: 20px;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #5a189a;
+            color: white;
+        }
+
+        .sidebar .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar .logo img {
+            max-width: 150px;
+            border-radius: 50px;
+            box-shadow: 0px 0px 5px;
+            width: 120px;
+        }
+
+        .sidebar-footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .sidebar .submenu {
+            list-style-type: none;
+            padding-left: 20px;
+            display: none;
+        }
+
+        .sidebar .submenu li a {
+            padding-left: 20px;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .sidebar .submenu li a:hover {
+            background-color: #6a1b9a;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .sidebar-close-btn {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: -250px;
+                transition: left 0.3s;
+                width: 250px;
+                height: 100vh;
+                z-index: 999;
+            }
+
+            .sidebar.show {
+                left: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar-close-btn {
+                display: block;
+                color: white;
+            }
+
+            .card h5 {
+                font-size: 1rem;
+            }
+
+            .card h2 {
+                font-size: 1.5rem;
+            }
+
+        }
+
+        @media (max-width: 576px) {
+            .card {
+                margin-bottom: 15px;
+            }
+
+            .card h2 {
+                font-size: 1.2rem;
+            }
+
+        }
+
+        .clockdate-wrapper {
+            background-color: #333;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            border-radius: 5px;
+            margin: 0 auto;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        #clock {
+            background-color: #333;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 60px;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8), 0px 0px 20px rgba(255, 255, 255, 0.8);
+            color: #fff;
+        }
+
+        #clock span {
+            color: #888;
+            text-shadow: 0px 0px 1px #333;
+            font-size: 50px;
+            position: relative;
+            top: -5px;
+            left: 10px;
+        }
+
+        #date {
+            letter-spacing: 3px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1001;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-toggle {
+                display: block;
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                z-index: 1001;
+            }
+        }
+    </style>
+</head>
+
+<body onload="startTime()">
+    <!-- Toggle Button -->
+    <button class="sidebar-toggle btn btn-primary">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <a href="#"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="#"><i class="fas fa-money-check"></i> Vendor Rate</a>
+        <a href="#" class="toggle-submenu"><i class="fas fa-user"></i> Client Management <i class="fas fa-chevron-down"></i></a>
+        <ul class="submenu">
+            <li><a href="#"><i class="fas fa-user-plus"></i> Client Create</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> Client List</a></li>
+            <li><a href="#"><i class="fas fa-user-cog"></i> Client Rate</a></li>
+        </ul>
+        <span class="sidebar-close-btn">&times;</span>
+        <div class="sidebar-footer">
+            <p>&copy; 2024 Garuda Express Courier</p>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-md-12 mx-auto">
+                    <div class="clockdate-wrapper">
+                        <div id="clock"></div>
+                        <div id="date"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Orders</h5>
+                            <h2 class="card-text">150</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card text-white bg-success">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Products</h5>
+                            <h2 class="card-text">320</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card text-white bg-info">
+                        <div class="card-body">
+                            <h5 class="card-title">Today's Orders</h5>
+                            <h2 class="card-text">45</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card text-white bg-warning">
+                        <div class="card-body">
+                            <h5 class="card-title">Products Today</h5>
+                            <h2 class="card-text">75</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.sidebar-toggle').addEventListener('click', function () {
+            document.querySelector('.sidebar').classList.toggle('show');
+        });
+
+        document.querySelector('.sidebar-close-btn').addEventListener('click', function () {
+            document.querySelector('.sidebar').classList.remove('show');
+        });
+
+        document.querySelectorAll('.toggle-submenu').forEach(function (element) {
+            element.addEventListener('click', function () {
+                const submenu = element.nextElementSibling;
+                submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        function startTime() {
+            const today = new Date();
+            const h = today.getHours();
+            const m = today.getMinutes();
+            const s = today.getSeconds();
+            document.getElementById('clock').innerHTML = `${h}:${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`;
+            document.getElementById('date').innerHTML = today.toDateString();
+            setTimeout(startTime, 1000);
+        }
+    </script>
+</body>
+
+</html>

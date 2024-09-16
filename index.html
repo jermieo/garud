@@ -283,7 +283,7 @@ body {
     }
 
     .social-signup button {
-        width: 45%;
+        width: 10%;
         font-size: 0.9rem;
         margin: 5px;
     }
@@ -302,9 +302,9 @@ body {
     <!-- Login & Signup Container -->
     <div class="login-signup-container">
         <!-- Login Section -->
-        <div class="login-container animate-left">
+        <div class="login-container animate-left" >
             <!-- Logo image -->
-            <img src="logo.png" alt="Logo">
+            <img src="logo.png" alt="Logo" style="border-radius: 50px; box-shadow: 0px 0px 5px;">
             <h3>Garuda Express Courier</h3>
             <!-- Add your login form here -->
         </div>
@@ -324,19 +324,11 @@ body {
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mt-3">Sign In</button>
             </form>
-            <div class="social-signup">
-                <p>Or sign in with:</p>
-                <div style="display: flex;">
-                    <button class="btn btn-google">
-                        <i class="fab fa-google" style="color: #eee4e4;"></i> 
-                    </button>
-                    <button class="btn btn-facebook">
-                        <i class="fab fa-facebook" style="color: #eee4e4;"></i> 
-                    </button>
 
-                </div>
-               
-            </div>
+            
+            <!-- Add this in your <head> to include Font Awesome -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+            
         </div>
     </div>
 
@@ -354,8 +346,10 @@ body {
 
         // Simulate signup actions
         function signup() {
-            // window.open("welcome.html", "_blank");
+            window.open("dashboard.html", "_blank");
         }
     </script>
 </body>
 </html>
+
+<!-- https://gist.github.com/Guvi001/cb585b5319734d9d8ffd639b3a11da4a -->
