@@ -227,12 +227,16 @@ body {
     align-items: center;
     background-color: #eee4e4; /* Background color for larger screens */
     font-family: 'Poppins', sans-serif;
+    background-image: url(bg.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 /* Mobile-specific styling */
 @media (max-width: 768px) {
     body {
         background-color: #51145e; /* No background color for mobile view */
+ 
     }
 
     .login-signup-container {
@@ -240,16 +244,23 @@ body {
         position: relative;
         padding: 20px;
         box-shadow: none;
-        border-radius: 250px;
-        background-color: transparent; /* Remove the container background on mobile */
+        border-radius: 500px;
+        /* background-color: #51145e; */
+        background-color: transparent;
+        
+
+        /* background: #51145e;
+        color: white; */
     }
 
-    .login-container, .signup-container {
+    .login-container {
         flex: 1;
         padding: 20px;
         width: 100%;
         background-color: white; /* Add individual background color */
         border-radius: 10px; /* Optional: Add a slight border-radius for cleaner look */
+        background-color: #51145e;
+        color: white;
     }
 
     h3 {
@@ -286,6 +297,9 @@ body {
         width: 10%;
         font-size: 0.9rem;
         margin: 5px;
+    }
+    .btn{
+        background-color: #51145e;
     }
 }
 
